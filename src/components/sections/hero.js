@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import TextTransition, { presets } from 'react-text-transition';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -40,14 +41,15 @@ const StyledHeroSection = styled.section`
   }
 
   h3 {
-    margin-top: 5px;
-    color: var(--black);
+    margin-top: 10px;
+    color: var(--light-gray);
     line-height: 0.9;
   }
 
   p {
     margin: 20px 0 0;
     /* max-width: 540px; */
+    color: var(--dark-gray);
   }
 
   .down_arrow {
@@ -70,9 +72,18 @@ const StyledHeroSection = styled.section`
   }
 `;
 
+const TEXTS = [
+  'JavaScript Freak',
+  'Building in Public',
+  'Product Enthusiast',
+  'Aspiring AI Engineer',
+  'Content Creator',
+];
+
 // const styledDown = styled
 
 const Hero = () => {
+  const [index, setIndex] = React.useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
   const [height, setHeight] = useState(window.innerHeight);
@@ -92,8 +103,22 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex(index => index + 1),
+      3000, // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
+
   const one = <h1>Hi, my name is</h1>;
-  const three = <h3 className="big-heading">Biswajit Kaushik</h3>;
+  const two = <h2 className="big-heading">Adrián Freisinger</h2>;
+  const three = (
+    <h3 className="medium-heading">
+      <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
+    </h3>
+  );
+
   const four = (
     <>
       <p>
@@ -108,7 +133,7 @@ const Hero = () => {
     </>
   );
 
-  const items = [one, three, four];
+  const items = [one, two, three, four];
 
   return (
     <StyledHeroSection style={{ height: height }}>

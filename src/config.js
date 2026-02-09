@@ -1,24 +1,24 @@
 module.exports = {
-  email: 'biswajitkaushik02@gmail.com',
+  email: 'afreisinger@gmail.com',
 
-  name: 'Biswajit Kaushik',
+  name: 'Adrián Freisinger',
 
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/biswajit-k',
+      url: 'https://github.com/afreisinger',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/speedo_sorted',
+      url: 'https://twitter.com/agfreisinger',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/biswajit-kaushik',
+      url: 'https://www.linkedin.com/in/afreisinger',
     },
   ],
 
-  youtube: 'https://www.youtube.com/@biswajit-k-yt',
+  youtube: 'https://www.youtube.com/@afreisinger',
 
   navLinks: [
     {

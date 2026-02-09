@@ -2,12 +2,12 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Biswajit Kaushik',
+    title: 'Adrián Freisinger',
     description:
-      'Biswajit Kaushik is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences.',
-    siteUrl: 'https://biswajit-kaushik.tech', // No trailing slash allowed!
+      'Adrián Freisinger is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences.',
+    siteUrl: 'https://adrianfreisinger.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@speedo_sorted',
+    twitterUsername: '@afreisinger',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Biswajit Kaushik',
-        short_name: 'Biswajit Kaushik',
+        name: 'Adrián Freisinger',
+        short_name: 'Adrián Freisinger',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,

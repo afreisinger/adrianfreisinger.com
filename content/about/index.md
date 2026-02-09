@@ -1,9 +1,9 @@
 ---
-name: Biswajit Kaushik
-profession: Software Engineer
-work: 'Software Engineer @ Samsung R&D'
-location: India
-email: 'biswajitkaushik02@gmail.com'
+name: Adrián Freisinger
+profession: Electronic Engineer
+work: 'Electronic Engineer @ Agencia de Recaudación y Control Aduanero ARCA'
+location: Argentina
+email: 'afreisinger@gmail.com'
 cover: ./me.jpg
 skills:
   - Backend Development (Python - Flask, Django)
@@ -12,7 +12,7 @@ skills:
   - Android (Kotlin)
 ---
 
-Hello! My name is Biswajit Kaushik and I enjoy solving real-world problems and bring
+Hello! My name is Adrián Freisinger and I enjoy solving real-world problems and bring
 them down to code. My interest in coding started during my freshman year at college
 when I decided to build an [automatic door lock system](https://www.newline.co/courses/build-a-spotify-connected-app) using Arduino. It gave me a sense of how powerful programming can be!
 

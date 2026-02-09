@@ -203,7 +203,7 @@ const ResumePage = ({ location }) => {
       <Helmet title="Resume" />
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Biswajit Kaushik</h1>
+          <h1 className="big-heading">Adrián Freisinger</h1>
           <a
             href="/resume.pdf"
             className='className="subtitle styled_link'

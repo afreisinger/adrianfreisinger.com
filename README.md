@@ -212,7 +212,7 @@ _If you wish to only modify the content and keep the design the same, you just h
 <!-- ROADMAP -->
 
 ## Future Improvements
- 
+
 The template is ready to be used, however like always, there is some scope for improvement that I see which I have listed below:
 
 **Code Refactoring**
@@ -274,7 +274,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/biswajit-kaushik/)
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:biswajitkaushik02@gmail.com)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:afreisinger@gmail.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
