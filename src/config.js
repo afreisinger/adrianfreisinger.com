@@ -21,14 +21,14 @@ module.exports = {
   youtube: 'https://www.youtube.com/@afreisinger',
 
   navLinks: [
-    {
-      name: 'Blog',
-      url: '/blog',
-    },
-    {
-      name: 'Projects',
-      url: '/projects',
-    },
+    // {
+    //   name: 'Blog',
+    //   url: '/blog',
+    // },
+    // {
+    //   name: 'Projects',
+    //   url: '/projects',
+    // },
     {
       name: 'About',
       url: '/about',

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Layout, Hero, FeaturedPost, FeaturedVideo, Contact } from '@components';
-
+// import { Layout, Hero, FeaturedPost, FeaturedVideo, Contact } from '@components';
+import { Layout, Hero, About, FeaturedPost, FeaturedVideo, Contact } from '@components';
 const StyledMainContainer = styled.main`
   counter-reset: section;
 `;
@@ -11,9 +11,10 @@ const IndexPage = ({ location }) => (
   <Layout location={location}>
     <StyledMainContainer className="fillHeight">
       <Hero />
-      <FeaturedPost />
-      <FeaturedVideo />
-      <Contact />
+      <About />
+      {/* <FeaturedPost /> */}
+      {/* <FeaturedVideo /> */}
+      {/* <Contact /> */}
     </StyledMainContainer>
   </Layout>
 );
