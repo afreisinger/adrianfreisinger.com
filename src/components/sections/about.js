@@ -160,6 +160,7 @@ const About = () => {
         frontmatter {
           name
           profession
+          education
           work
           location
           email
@@ -211,6 +212,10 @@ const About = () => {
           <div className="detail">
             <p className="detail__name">{frontmatter.name}</p>
             <p className="detail__profession">{frontmatter.profession}</p>
+            <div className="detail__item">
+              <Icon className="detail__item__icon" name="Education" />
+              <p className="detail__item__text">{frontmatter.education}</p>
+            </div>
             <div className="detail__item">
               <Icon className="detail__item__icon" name="Job" />
               <p className="detail__item__text">{frontmatter.work}</p>

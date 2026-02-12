@@ -1,5 +1,18 @@
 # Changelog
 
+## [2026-02-11] - [pending]
+- ✨ feat(education): add education section and icon
+- 💄 style(branding): update logo and favicons
+- 🧹 chore(assets): cleanup temporary resume files and hidden artifacts
+- 📝 docs: update resume and work experience files
+
+## [2026-02-10] - [5078d2a]
+- ✨ feat: customize homepage sections and nav links
+
+## [2026-02-09] - [a184531]
+- Update project styles, configuration, and add initial changelog
+
+
 ## [2026-02-09] - [701254c]
 
 - Update project styles, configuration, and add initial changelog

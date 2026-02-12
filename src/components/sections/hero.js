@@ -121,15 +121,18 @@ const Hero = () => {
 
   const four = (
     <>
-      <p>
+      {/* <p>
         I'm a software engineer specializing in building exceptional digital experiences. Currently,
         I'm working on digitize health records of users to make it easier, seamless and secure for
         them to view and share their medical history at{' '}
         <a href="https://research.samsung.com/sri-n" target="_blank" rel="noreferrer">
           Samsung R&D
         </a>
-        .
-      </p>
+      </p> */}
+      <p>
+        I’m an Electronic Engineer, passionate programmer from Argentina specializing in building exceptional digital experiences.
+        Currently, I work on open-source video platforms and AI-powered bots.
+      </p>  
     </>
   );
 

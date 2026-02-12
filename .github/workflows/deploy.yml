@@ -1,0 +1,50 @@
+name: Deploy Gatsby (local runner)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: |
+          if [ -f yarn.lock ]; then
+            yarn install --frozen-lockfile
+          else
+            npm ci
+          fi
+
+      - name: Build
+        run: yarn build
+
+      - name: Create release directory
+        id: release
+        run: |
+          TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+          RELEASE_DIR="/data/dev/www/releases/$TIMESTAMP"
+          mkdir -p $RELEASE_DIR
+          echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
+
+      - name: Sync files to release
+        run: |
+          rsync -av --delete public/ ${{ steps.release.outputs.release_dir }}/
+
+      - name: Update current symlink
+        run: |
+          ln -sfn ${{ steps.release.outputs.release_dir }} /data/dev/www/current
+
+      - name: Cleanup old releases (keep last 5)
+        run: |
+          cd /data/dev/www/releases
+          ls -dt */ | tail -n +6 | xargs -r rm -rf

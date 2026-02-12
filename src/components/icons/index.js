@@ -18,3 +18,4 @@ export { default as IconJob } from './job';
 export { default as IconLocation } from './location';
 export { default as IconDownArrow } from './downArrow';
 export { default as IconInbox } from './inbox';
+export { default as IconEducation } from './education';
