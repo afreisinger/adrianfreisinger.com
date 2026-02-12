@@ -2,7 +2,7 @@
 .cache
 node_modules
 yarn-error.log
-package-lock.json
+
 
 # Build directory
 /public
@@ -11,5 +11,4 @@ package-lock.json
 .vscode/
 .agents
 .agent
-yarn.lock
 www.code-workspace

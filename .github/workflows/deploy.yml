@@ -19,7 +19,7 @@ jobs:
       - name: Enable Corepack
         run: |
           corepack enable
-          corepack prepare yarn@stable --activate
+          corepack prepare yarn@1.22.19 --activate
 
       - name: Install dependencies
         run: |
