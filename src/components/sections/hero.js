@@ -73,7 +73,7 @@ const StyledHeroSection = styled.section`
 `;
 
 const TEXTS = [
-  'Ansible Freak',
+  'Automation Freak',
   'Building in Public',
   'Product Enthusiast',
   'Aspiring AI Engineer',
