@@ -15,8 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      
-      - name: Enable Corepack
+
+      - name: Enable Corepack (Yarn 1)
         run: |
           corepack enable
           corepack prepare yarn@1.22.19 --activate
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -f yarn.lock ]; then
-            yarn install --inmutable
+            yarn install --frozen-lockfile
           else
             npm ci
           fi
@@ -32,21 +32,27 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Ensure releases directory exists
+        run: |
+          mkdir -p /data/dev/www/html/releases
+
       - name: Create release directory
         id: release
         run: |
+          set -e
           TIMESTAMP=$(date +"%Y%m%d%H%M%S")
           RELEASE_DIR="/data/dev/www/html/releases/$TIMESTAMP"
-          mkdir -p $RELEASE_DIR
+          mkdir -p "$RELEASE_DIR"
           echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
 
       - name: Sync files to release
         run: |
-          rsync -av --delete public/ ${{ steps.release.outputs.release_dir }}/
+          set -e
+          rsync -av --delete public/ "${{ steps.release.outputs.release_dir }}/"
 
-      - name: Update current symlink
+      - name: Update current symlink (atomic switch)
         run: |
-          ln -sfn ${{ steps.release.outputs.release_dir }} /data/dev/www/html/current
+          ln -sfn "${{ steps.release.outputs.release_dir }}" /data/dev/www/html/current
 
       - name: Cleanup old releases (keep last 5)
         run: |
