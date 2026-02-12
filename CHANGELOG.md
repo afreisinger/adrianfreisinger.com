@@ -1,6 +1,11 @@
 # Changelog
 
+## [2026-02-12] - [ce03762]
+
+- fix(deploy): update deploy workflow to use node 20
+
 ## [2026-02-11] - [e2b7738]
+
 - 👷 ci(deploy): enable Corepack for Yarn in deployment workflow
 - ✨ feat(education): add education section and icon
 - 💄 style(branding): update logo and favicons
@@ -8,11 +13,12 @@
 - 📝 docs: update resume and work experience files
 
 ## [2026-02-10] - [5078d2a]
+
 - ✨ feat: customize homepage sections and nav links
 
 ## [2026-02-09] - [a184531]
-- Update project styles, configuration, and add initial changelog
 
+- Update project styles, configuration, and add initial changelog
 
 ## [2026-02-09] - [701254c]
 
