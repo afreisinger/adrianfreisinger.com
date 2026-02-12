@@ -1,6 +1,7 @@
 # Changelog
 
-## [2026-02-11] - [b522647]
+## [2026-02-11] - [pending]
+- 👷 ci(deploy): enable Corepack for Yarn in deployment workflow
 - ✨ feat(education): add education section and icon
 - 💄 style(branding): update logo and favicons
 - 🧹 chore(assets): cleanup temporary resume files and hidden artifacts

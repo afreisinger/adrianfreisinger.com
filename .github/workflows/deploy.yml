@@ -16,6 +16,11 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
+      
+      - name: Enable Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@stable --activate
 
       - name: Install dependencies
         run: |
