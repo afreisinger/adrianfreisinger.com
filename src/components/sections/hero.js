@@ -73,7 +73,7 @@ const StyledHeroSection = styled.section`
 `;
 
 const TEXTS = [
-  'JavaScript Freak',
+  'Ansible Freak',
   'Building in Public',
   'Product Enthusiast',
   'Aspiring AI Engineer',
@@ -130,9 +130,10 @@ const Hero = () => {
         </a>
       </p> */}
       <p>
-        I’m an Electronic Engineer, passionate programmer from Argentina specializing in building exceptional digital experiences.
-        Currently, I work on open-source video platforms and AI-powered bots.
-      </p>  
+        I’m an Electronic Engineer, passionate programmer from Argentina specializing in building
+        exceptional digital experiences. Currently, I work on open-source video platforms and
+        AI-powered bots.
+      </p>
     </>
   );
 
