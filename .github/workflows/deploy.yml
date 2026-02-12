@@ -50,9 +50,12 @@ jobs:
           set -e
           rsync -av --delete public/ "${{ steps.release.outputs.release_dir }}/"
 
+
       - name: Update current symlink (atomic switch)
         run: |
-          ln -sfn "${{ steps.release.outputs.release_dir }}" /data/dev/www/html/current
+          cd /data/dev/www/html
+          RELEASE_NAME=$(basename "${{ steps.release.outputs.release_dir }}")
+          ln -sfn "releases/$RELEASE_NAME" current
 
       - name: Cleanup old releases (keep last 5)
         run: |
