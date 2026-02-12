@@ -67,7 +67,7 @@ jobs:
         run: |
           docker exec adrianfreisinger.com sh -c "rm -rf /var/www/html/current/*"
           docker exec adrianfreisinger.com sh -c "cp -r /var/www/html/releases/$(basename ${{ steps.release.outputs.release_dir }})/* /var/www/html/current/"
-      
+          docker exec adrianfreisinger.com sh -c "chmod -R 755 /var/www/html/current"
       
       - name: Reload nginx
         run: |
