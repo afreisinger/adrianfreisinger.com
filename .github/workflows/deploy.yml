@@ -40,7 +40,7 @@ jobs:
         id: release
         run: |
           set -e
-          TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+          TIMESTAMP=$(TZ=America/Argentina/Buenos_Aires date +"%Y%m%dT%H%M%S")
           RELEASE_DIR="/data/dev/www/html/releases/$TIMESTAMP"
           mkdir -p "$RELEASE_DIR"
           echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
@@ -51,11 +51,20 @@ jobs:
           rsync -av --delete public/ "${{ steps.release.outputs.release_dir }}/"
 
 
-      - name: Update current symlink (atomic switch)
+      # - name: Update current symlink (atomic switch)
+      #   run: |
+      #     cd /data/dev/www/html
+      #     RELEASE_NAME=$(basename "${{ steps.release.outputs.release_dir }}")
+      #     ln -sfn "releases/$RELEASE_NAME" current
+
+      - name: Update current symlink inside container
         run: |
-          cd /data/dev/www/html
           RELEASE_NAME=$(basename "${{ steps.release.outputs.release_dir }}")
-          ln -sfn "releases/$RELEASE_NAME" current
+          docker exec adrianfreisinger.com sh -c "cd /var/www/html && ln -sfn releases/$RELEASE_NAME current"
+
+      - name: Reload nginx
+        run: |
+          docker exec adrianfreisinger.com nginx -s reload
 
       - name: Cleanup old releases (keep last 5)
         run: |
