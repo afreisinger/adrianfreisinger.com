@@ -36,7 +36,7 @@ jobs:
         id: release
         run: |
           TIMESTAMP=$(date +"%Y%m%d%H%M%S")
-          RELEASE_DIR="/data/dev/www/releases/$TIMESTAMP"
+          RELEASE_DIR="/data/dev/www/htmlreleases/$TIMESTAMP"
           mkdir -p $RELEASE_DIR
           echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
 
@@ -46,9 +46,9 @@ jobs:
 
       - name: Update current symlink
         run: |
-          ln -sfn ${{ steps.release.outputs.release_dir }} /data/dev/www/current
+          ln -sfn ${{ steps.release.outputs.release_dir }} /data/dev/www/html/current
 
       - name: Cleanup old releases (keep last 5)
         run: |
-          cd /data/dev/www/releases
+          cd /data/dev/www/html/releases
           ls -dt */ | tail -n +6 | xargs -r rm -rf
