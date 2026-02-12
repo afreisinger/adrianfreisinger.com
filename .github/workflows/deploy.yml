@@ -36,7 +36,7 @@ jobs:
         id: release
         run: |
           TIMESTAMP=$(date +"%Y%m%d%H%M%S")
-          RELEASE_DIR="/data/dev/www/htmlreleases/$TIMESTAMP"
+          RELEASE_DIR="/data/dev/www/html/releases/$TIMESTAMP"
           mkdir -p $RELEASE_DIR
           echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
 
