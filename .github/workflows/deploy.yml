@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -f yarn.lock ]; then
-            yarn install --frozen-lockfile
+            yarn install --inmutable
           else
             npm ci
           fi
