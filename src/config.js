@@ -21,14 +21,6 @@ module.exports = {
   youtube: 'https://www.youtube.com/@afreisinger',
 
   navLinks: [
-    // {
-    //   name: 'Blog',
-    //   url: '/blog',
-    // },
-    // {
-    //   name: 'Projects',
-    //   url: '/projects',
-    // },
     {
       name: 'About',
       url: '/about',
@@ -38,6 +30,14 @@ module.exports = {
       url: '/resume',
     },
   ],
+
+  features: {
+    blog: false,
+    projects: false,
+    youtube: false,
+    contact: false,
+    featuredProjects: false,
+  },
 
   colors: {
     green: '#64ffda',

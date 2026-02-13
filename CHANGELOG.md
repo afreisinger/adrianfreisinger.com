@@ -6,6 +6,7 @@
 - 💄 style(nav): fix navbar layout, logo scaling, and alignment
 - ⚙️ chore(deps): migrate google-analytics to google-gtag for Gatsby 5 support
 - 🧹 chore: clean up ESLint errors and deprecated config options
+- ✨ feat: implement feature toggle system for conditional section rendering
 
 ## [2026-02-12] - [ce03762]
 
