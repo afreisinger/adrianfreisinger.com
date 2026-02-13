@@ -24,6 +24,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               slug
             }
+            id
           }
         }
       }
@@ -51,7 +52,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       createPage({
         path: node.frontmatter.slug,
         component: postTemplate,
-        context: {},
+        context: {
+          id: node.id,
+        },
       });
     }
   });

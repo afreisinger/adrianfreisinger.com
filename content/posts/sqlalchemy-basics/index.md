@@ -5,7 +5,7 @@ database using session object. This makes it easier to manage ORM objects. This 
 session in general and how you can use it."
 date: 2024-08-24
 featured: true
-slug: /blog/sqlqlchemy-session-basics
+slug: /blog/sqlalchemy-session-basics
 tags:
   - databases
   - python
