@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -9,6 +9,7 @@ import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
 
+/* ================= STYLES (NO CAMBIAN) ================= */
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
@@ -18,9 +19,6 @@ const StyledHeader = styled.header`
   width: 100%;
   height: var(--nav-height);
   background-color: rgb(255 255 255 / 0.2) !important;
-  filter: none !important;
-  pointer-events: auto !important;
-  user-select: auto !important;
   backdrop-filter: blur(10px);
   transition: var(--transition);
 
@@ -76,6 +74,8 @@ const StyledNav = styled.nav`
         top: 0;
         left: 0;
         z-index: -1;
+        width: 100%;
+        height: 100%;
         @media (prefers-reduced-motion: no-preference) {
           transition: var(--transition);
         }
@@ -84,6 +84,8 @@ const StyledNav = styled.nav`
       .logo-container {
         position: relative;
         z-index: 1;
+        width: 100%;
+        height: 100%;
         svg {
           fill: none;
           user-select: none;
@@ -118,6 +120,7 @@ const StyledLinks = styled.div`
 
   ol {
     ${({ theme }) => theme.mixins.flexBetween};
+    display: flex;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -134,7 +137,7 @@ const StyledLinks = styled.div`
         &:hover,
         &:focus-visible {
           font-weight: 600;
-          transition: all 0.5s ease !important;
+          transition: all 0.5s ease-in-out;
         }
       }
     }
@@ -147,25 +150,33 @@ const StyledLinks = styled.div`
   }
 `;
 
+const StyledMenuWrapper = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+/* ================= COMPONENT ================= */
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const handleScroll = () => {
-    setScrolledToTop(window.pageYOffset < 50);
-  };
+  const logoRef = useRef(null);
+  const menuRef = useRef(null);
+  const linkRefs = useRef([]);
+
+  const handleScroll = () => setScrolledToTop(window.pageYOffset < 50);
 
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
     }
 
-    const timeout = setTimeout(() => {
-      setIsMounted(true);
-    }, 100);
-
+    const timeout = setTimeout(() => setIsMounted(true), 100);
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -179,26 +190,15 @@ const Nav = ({ isHome }) => {
   const fadeDownClass = isHome ? 'fadedown' : '';
 
   const Logo = (
-    <div className="logo" tabIndex="-1">
-      {isHome ? (
-        <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
-        </a>
-      ) : (
-        <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
-        </Link>
-      )}
+    <div className="logo" ref={logoRef}>
+      <Link to="/" aria-label="home">
+        <div className="hex-container">
+          <IconHex />
+        </div>
+        <div className="logo-container">
+          <IconLogo />
+        </div>
+      </Link>
     </div>
   );
 
@@ -208,7 +208,6 @@ const Nav = ({ isHome }) => {
         {prefersReducedMotion ? (
           <>
             {Logo}
-
             <StyledLinks>
               <ol>
                 {navLinks &&
@@ -219,15 +218,14 @@ const Nav = ({ isHome }) => {
                   ))}
               </ol>
             </StyledLinks>
-
             <Menu />
           </>
         ) : (
           <>
             <TransitionGroup component={null}>
               {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo}</>
+                <CSSTransition nodeRef={logoRef} classNames={fadeClass} timeout={timeout}>
+                  {Logo}
                 </CSSTransition>
               )}
             </TransitionGroup>
@@ -237,21 +235,31 @@ const Nav = ({ isHome }) => {
                 <TransitionGroup component={null}>
                   {isMounted &&
                     navLinks &&
-                    navLinks.map(({ url, name }, i) => (
-                      <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
-                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
-                        </li>
-                      </CSSTransition>
-                    ))}
+                    navLinks.map(({ url, name }, i) => {
+                      const ref = (linkRefs.current[i] ||= React.createRef());
+                      return (
+                        <CSSTransition
+                          key={i}
+                          nodeRef={ref}
+                          classNames={fadeDownClass}
+                          timeout={timeout}
+                        >
+                          <li ref={ref} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                            <Link to={url}>{name}</Link>
+                          </li>
+                        </CSSTransition>
+                      );
+                    })}
                 </TransitionGroup>
               </ol>
             </StyledLinks>
 
             <TransitionGroup component={null}>
               {isMounted && (
-                <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <Menu />
+                <CSSTransition nodeRef={menuRef} classNames={fadeClass} timeout={timeout}>
+                  <StyledMenuWrapper ref={menuRef}>
+                    <Menu />
+                  </StyledMenuWrapper>
                 </CSSTransition>
               )}
             </TransitionGroup>

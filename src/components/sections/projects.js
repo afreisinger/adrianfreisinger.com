@@ -7,6 +7,7 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
+
 const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -169,7 +170,7 @@ const Projects = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { featured: { ne: true } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: {frontmatter: {date: DESC}}
       ) {
         edges {
           node {
@@ -272,22 +273,26 @@ const Projects = () => {
         ) : (
           <TransitionGroup component={null}>
             {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
-                <CSSTransition
-                  key={i}
-                  classNames="fadeup"
-                  timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}>
-                  <StyledProject
+              projectsToShow.map(({ node }, i) => {
+                const ref = (revealProjects.current[i] ||= React.createRef());
+                return (
+                  <CSSTransition
                     key={i}
-                    ref={el => (revealProjects.current[i] = el)}
-                    style={{
-                      transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}>
-                    {projectInner(node)}
-                  </StyledProject>
-                </CSSTransition>
-              ))}
+                    nodeRef={ref}
+                    classNames="fadeup"
+                    timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
+                    exit={false}>
+                    <StyledProject
+                      key={i}
+                      ref={ref}
+                      style={{
+                        transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
+                      }}>
+                      {projectInner(node)}
+                    </StyledProject>
+                  </CSSTransition>
+                );
+              })}
           </TransitionGroup>
         )}
       </ul>

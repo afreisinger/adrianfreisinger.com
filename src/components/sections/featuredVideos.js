@@ -123,7 +123,7 @@ const FeaturedVideo = () => {
     {
       featured: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/videos/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
+        sort: {frontmatter: {date: ASC}}
       ) {
         edges {
           node {

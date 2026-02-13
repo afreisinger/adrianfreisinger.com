@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026-02-13]
+
+- 🐛 fix(react): resolve findDOMNode error in Transitions by adding nodeRefs (React 18 compatibility)
+- 💄 style(nav): fix navbar layout, logo scaling, and alignment
+- ⚙️ chore(deps): migrate google-analytics to google-gtag for Gatsby 5 support
+- 🧹 chore: clean up ESLint errors and deprecated config options
+
 ## [2026-02-12] - [ce03762]
 
 - fix(deploy): update deploy workflow to use node 20

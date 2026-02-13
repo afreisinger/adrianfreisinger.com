@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
@@ -6,6 +6,8 @@ import { navDelay, loaderDelay } from '@utils';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import TextTransition, { presets } from 'react-text-transition';
+
+
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -87,6 +89,7 @@ const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
   const [height, setHeight] = useState(window.innerHeight);
+  const revealRefs = useRef([]);
 
   useEffect(() => {
     const handleResize = () => setHeight(window.innerHeight);
@@ -148,17 +151,43 @@ const Hero = () => {
           ))}
         </>
       ) : (
+      // <TransitionGroup component={null}>
+      //   {isMounted &&
+      //     items.map((item, i) => (
+      //       <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+      //         <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+      //       </CSSTransition>
+      //     ))}
+      //   <Link className="down_arrow" to="#featured-posts">
+      //     <Icon className="detail__item__icon" name="DownArrow" />
+      //   </Link>
+      // </TransitionGroup>
+        
         <TransitionGroup component={null}>
           {isMounted &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
-            ))}
+            items.map((item, i) => {
+              const ref = (revealRefs.current[i] ||= React.createRef());
+              return (
+                <CSSTransition
+                  key={i}
+                  nodeRef={ref}
+                  classNames="fadeup"
+                  timeout={loaderDelay}
+                >
+                  <div
+                    ref={ref}
+                    style={{ transitionDelay: `${i + 1}00ms` }}
+                  >
+                    {item}
+                  </div>
+                </CSSTransition>
+              );
+            })}
           <Link className="down_arrow" to="#featured-posts">
             <Icon className="detail__item__icon" name="DownArrow" />
           </Link>
         </TransitionGroup>
+
       )}
     </StyledHeroSection>
   );
