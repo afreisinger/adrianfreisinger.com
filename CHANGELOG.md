@@ -10,6 +10,7 @@
 - 🧹 chore(assets): cleanup redundant PNG files and structure images directory
 - 🐛 fix(build): resolve HTML compilation error by querying posts by 'id' and fixing typo in slug
 - 👷 ci(deploy): modernize Yarn management using Corepack and packageManager field
+- 📄 docs: create CODE_OF_CONDUCT.md and update documentation links
 
 ## [2026-02-12] - [ce03762]
 

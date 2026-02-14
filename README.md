@@ -256,13 +256,17 @@ If you have a suggestion that would make this better, please fork the repo and c
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -270,9 +274,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-[![X](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/speedo_sorted)
+[![X](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/agfreisinger)
 
-[![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/biswajit-kaushik/)
+[![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/afreisinger/)
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:afreisinger@gmail.com)
 
@@ -294,6 +298,6 @@ Don't forget to give the project a star! Thanks again!
 [issues-shield]: https://img.shields.io/github/issues/biswajit-k/MonoSlate.svg?style=for-the-badge
 [issues-url]: https://github.com/biswajit-k/MonoSlate/issues
 [license-shield]: https://img.shields.io/github/license/biswajit-k/MonoSlate.svg?style=for-the-badge
-[license-url]: https://github.com/biswajit-k/MonoSlate/blob/master/LICENSE.txt
+[license-url]: https://github.com/afreisinger/adrianfreisinger.com/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/biswajit-kaushik
+[linkedin-url]: https://linkedin.com/in/afreisinger/
