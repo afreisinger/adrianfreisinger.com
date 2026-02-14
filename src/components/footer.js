@@ -121,7 +121,7 @@ const Footer = () => {
       <StyledCredit tabindex="-1">
         <a href="https://github.com/afreisinger/adrianfreisinger.com">
           <div>
-            Designed &amp; Built by Adrián Freisinger
+            Built by Adrián Freisinger
             {githubInfo.version && <span> — {githubInfo.version}</span>}
           </div>
 
