@@ -20,6 +20,7 @@ import {
   IconInbox,
   IconDownArrow,
   IconEducation,
+  IconTag,
 } from '@components/icons';
 
 const Icon = ({ name }) => {
@@ -62,6 +63,8 @@ const Icon = ({ name }) => {
       return <IconDownArrow />;
     case 'Education':
       return <IconEducation />;
+    case 'Tag':
+      return <IconTag />;
     default:
       return <IconExternal />;
   }

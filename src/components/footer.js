@@ -120,21 +120,28 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/afreisinger/adrianfreisinger.com">
-          <div>
-            Built by Adrián Freisinger
-            {githubInfo.version && <span> — {githubInfo.version}</span>}
-          </div>
+          <div>Built by Adrián Freisinger</div>
 
-          {githubInfo.stars !== null && githubInfo.forks !== null && (
+          {(githubInfo.stars !== null || githubInfo.forks !== null || githubInfo.version) && (
             <div className="github-stats">
-              <span>
-                <Icon name="Star" />
-                <span>{githubInfo.stars.toLocaleString()}</span>
-              </span>
-              <span>
-                <Icon name="Fork" />
-                <span>{githubInfo.forks.toLocaleString()}</span>
-              </span>
+              {githubInfo.stars !== null && (
+                <span>
+                  <Icon name="Star" />
+                  <span>{githubInfo.stars.toLocaleString()}</span>
+                </span>
+              )}
+              {githubInfo.forks !== null && (
+                <span>
+                  <Icon name="Fork" />
+                  <span>{githubInfo.forks.toLocaleString()}</span>
+                </span>
+              )}
+              {githubInfo.version && (
+                <span>
+                  <Icon name="Tag" />
+                  <span>{githubInfo.version}</span>
+                </span>
+              )}
             </div>
           )}
         </a>
