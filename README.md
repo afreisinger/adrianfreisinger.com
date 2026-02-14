@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/afreisinger/adrianfreisinger.com">
-    <img src="static/og.png" alt="www" width="200">
+    <img src="static/og.png" alt="www" width="600">
   </a>
 
   <p align="center">
