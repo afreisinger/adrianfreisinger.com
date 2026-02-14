@@ -9,6 +9,7 @@
 - ✨ feat: implement feature toggle system for conditional section rendering
 - 🧹 chore(assets): cleanup redundant PNG files and structure images directory
 - 🐛 fix(build): resolve HTML compilation error by querying posts by 'id' and fixing typo in slug
+- 👷 ci(deploy): modernize Yarn management using Corepack and packageManager field
 
 ## [2026-02-12] - [ce03762]
 
