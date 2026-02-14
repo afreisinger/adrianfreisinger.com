@@ -26,6 +26,10 @@ module.exports = {
       url: '/about',
     },
     {
+      name: 'Projects',
+      url: '/projects',
+    },
+    {
       name: 'Resume',
       url: '/resume',
     },
@@ -33,10 +37,10 @@ module.exports = {
 
   features: {
     blog: false,
-    projects: false,
+    projects: true,
     youtube: false,
     contact: false,
-    featuredProjects: false,
+    featuredProjects: true,
   },
 
   colors: {

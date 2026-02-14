@@ -1,0 +1,49 @@
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 3rem;
+	width: 3rem;
+	background-color: var(--clr-grey-dark);
+	opacity: .74;
+	border-radius: 1.2rem;
+	box-shadow: var(--shadow);
+
+	// text 
+	font-size: var(--fs-300);
+	font-weight: 500;
+	color: var(--clr-primary);
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.logo-text{
+
+	display: inline-block;
+	color: var(--clr-primary);
+	font-size: var(--fs-300);
+	font-weight: 500;
+
+	margin-left: 1rem;
+
+	&.shrink{
+		font-size: 0rem;
+	}	
+}
+
+
+.logo-box{
+	margin-right: auto;
+}
+
+

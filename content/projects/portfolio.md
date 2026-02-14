@@ -1,7 +1,7 @@
 ---
 date: '2026-02-13'
 title: 'Portfolio Website'
-cover: './placeholder.png'
+cover: ./images/portfolio-cover.png
 github: 'https://github.com/afreisinger/adrianfreisinger.com'
 external: 'https://adrianfreisinger.com'
 tech:

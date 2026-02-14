@@ -1,0 +1,123 @@
+
+//////////////////// animation selectors
+
+
+//////////// scroll styles
+.js-scroll{
+    opacity: 0;
+    transition: opacity .5s, font-size 1s;
+}
+.scrolled{
+    opacity: 1;
+}
+.scrolled.fade-bottom{
+    animation-name: fadeBottom;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.scrolled.grow{
+    animation-name: grow;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+}
+.scrolled.fade-left{
+    animation-name: fadeLeft;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.scrolled.fade-right{
+    animation-name: fadeRight;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+//////////// logo style
+
+.scrolled.shrink{
+    font-size: var(--fs-300) !important;
+    transition: all 1s ease-out;
+}
+
+/////////// nav bar sticky 
+.resize{                // resize logo text
+	font-size: 0rem !important;
+	opacity: 0 !important;
+}
+.sticky{
+	background-color: #fefefe;
+	box-shadow: 0 5px 20px -5px rgb(0 0 0 / 7%);
+	padding: .75rem 0;
+}
+
+// //////////// load animation
+.loader{
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fefefe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > * {
+        width: 50% !important;
+    }
+    
+}
+
+.loader.hidden {
+    animation: fadeOut 1s;              // take 1s to fade out
+    animation-fill-mode: forwards;
+    animation-delay: 1.35s;             // wait 1.35s for animation then start fadeout
+}
+
+
+
+
+//////////////////////////// declarations
+@keyframes fadeBottom{                                  
+    0% {
+        transform:translateY(100px);                    
+    }
+    100% {
+        transform:translate(0);                     
+    }
+}
+@keyframes grow{                                  
+    0% {
+        transform: scale(0.5);                  
+    }
+    100% {
+        transform: scale(1);                   
+    }
+}
+@keyframes fadeLeft{                                  
+    0% {
+        transform:translateX(-100px);                    
+    }
+    100% {
+        transform:translate(0);                     
+    }
+}
+@keyframes fadeRight{                                  
+    0% {
+        transform:translateX(100px);                    
+    }
+    100% {
+        transform:translate(0);                     
+    }
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -22;
+    }
+}
+
+
+

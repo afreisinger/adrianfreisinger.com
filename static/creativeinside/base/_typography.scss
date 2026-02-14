@@ -1,0 +1,60 @@
+
+///////////////////////////// container typo
+
+.container{ 
+	margin-inline: auto;
+	width: min(90%, 90rem);
+	
+}
+
+
+/////////////////////////////// heading typo
+.heading__primary{
+
+	font-weight: 700;
+	font-size: var(--fs-900);
+	// line-height: 1.2;
+	color: var(--clr-black);
+
+}
+.heading__secondary{
+	font-size: var(--fs-300);
+	font-weight: 650;
+
+	color: var(--clr-black);
+	text-transform: uppercase;
+}
+
+.text{
+	font-size: var(--fs-300);
+	line-height: 2rem;
+	hyphens: auto;
+	text-shadow: var(--shadow);
+}
+
+.text-center{
+	text-align: center;
+}
+.text-white{
+	color: #fff !important;
+}
+
+.d-flex{
+	display: flex !important;
+}
+
+.flex-center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+//////////////////////////// margin typo
+
+
+.margin-y-small{ margin-top: 1rem; margin-bottom: 1rem; }
+.margin-y-medium{ margin-top: 2rem; margin-bottom: 2rem; }
+.margin-y-large{ margin-top: 4rem; margin-bottom: 4rem; }
+
+.margin-x-small{ margin-left: 1rem; margin-right: 1rem; }
+.margin-x-medium{ margin-left: 2rem; margin-right: 1rem; }
+.margin-x-large{ margin-left: 4em; margin-right: 4rem; }

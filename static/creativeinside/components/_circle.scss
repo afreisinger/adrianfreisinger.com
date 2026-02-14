@@ -1,0 +1,11 @@
+.circle{
+    border-radius: 50%;
+    &-lg{
+        width: 10rem;
+        height: 10rem;
+    }
+    &-sm{
+        width: 6rem;
+        height: 6rem;
+    }
+}
