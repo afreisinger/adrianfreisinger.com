@@ -11,6 +11,8 @@
 - 🐛 fix(build): resolve HTML compilation error by querying posts by 'id' and fixing typo in slug
 - 👷 ci(deploy): modernize Yarn management using Corepack and packageManager field
 - 📄 docs: create CODE_OF_CONDUCT.md and update documentation links
+- 🧹 chore(content): remove non-original content and images from projects and videos
+- ✨ feat: add placeholder content for personal projects and videos
 
 ## [2026-02-12] - [ce03762]
 
