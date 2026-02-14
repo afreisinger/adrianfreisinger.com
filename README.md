@@ -19,21 +19,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/biswajit-k/MonoSlate">
+  <a href="https://github.com/afreisinger/adrianfreisinger.com">
     <img src="images/logo.png" alt="Logo" width="200">
   </a>
 
   <p align="center">
     A sleek, fast, and fully customizable portfolio for everyone
     <br />
-    <a href="https://biswajit-k.tech/"><strong>View Live »</strong></a>
+    <a href="https://adrianfreisinger.com/"><strong>View Live »</strong></a>
     <br />
     <br />
     <a href="#getting-started">Quickstart</a>
     ·
-    <a href="https://github.com/biswajit-k/MonoSlate/issues">Report Bug</a>
+    <a href="https://github.com/afreisinger/adrianfreisinger.com/issues">Report Bug</a>
     ·
-    <a href="https://github.com/biswajit-k/MonoSlate/issues">Request Feature</a>
+    <a href="https://github.com/afreisinger/adrianfreisinger.com/issues">Request Feature</a>
   </p>
 </div>
 
@@ -105,7 +105,7 @@ Make sure that you have [Node.js](https://nodejs.org/en) installed as it would h
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/biswajit-k/MonoSlate.git
+   git clone https://github.com/afreisinger/adrianfreisinger.com.git
    ```
 
 2. Install the Gatsby CLI
@@ -289,15 +289,15 @@ Don't forget to give the project a star! Thanks again!
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/biswajit-k/MonoSlate.svg?style=for-the-badge
-[contributors-url]: https://github.com/biswajit-k/MonoSlate/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/biswajit-k/MonoSlate.svg?style=for-the-badge
-[forks-url]: https://github.com/biswajit-k/MonoSlate/network/members
-[stars-shield]: https://img.shields.io/github/stars/biswajit-k/MonoSlate.svg?style=for-the-badge
-[stars-url]: https://github.com/biswajit-k/MonoSlate/stargazers
-[issues-shield]: https://img.shields.io/github/issues/biswajit-k/MonoSlate.svg?style=for-the-badge
-[issues-url]: https://github.com/biswajit-k/MonoSlate/issues
-[license-shield]: https://img.shields.io/github/license/biswajit-k/MonoSlate.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/afreisinger/adrianfreisinger.com.svg?style=for-the-badge
+[contributors-url]: https://github.com/afreisinger/adrianfreisinger.com/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/afreisinger/adrianfreisinger.com.svg?style=for-the-badge
+[forks-url]: https://github.com/afreisinger/adrianfreisinger.com/network/members
+[stars-shield]: https://img.shields.io/github/stars/afreisinger/adrianfreisinger.com.svg?style=for-the-badge
+[stars-url]: https://github.com/afreisinger/adrianfreisinger.com/stargazers
+[issues-shield]: https://img.shields.io/github/issues/afreisinger/adrianfreisinger.com.svg?style=for-the-badge
+[issues-url]: https://github.com/afreisinger/adrianfreisinger.com/issues
+[license-shield]: https://img.shields.io/github/license/afreisinger/adrianfreisinger.com.svg?style=for-the-badge
 [license-url]: https://github.com/afreisinger/adrianfreisinger.com/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/afreisinger/

@@ -13,6 +13,7 @@
 - 📄 docs: create CODE_OF_CONDUCT.md and update documentation links
 - 🧹 chore(content): remove non-original content and images from projects and videos
 - ✨ feat: add placeholder content for personal projects and videos
+- 📝 docs: update GitHub URLs and badges in README.md to point to personal repository
 
 ## [2026-02-12] - [ce03762]
 
