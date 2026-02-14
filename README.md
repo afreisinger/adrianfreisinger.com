@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/afreisinger/adrianfreisinger.com">
-    <img src="images/logo.png" alt="Logo" width="200">
+    <img src="src/images/logo.png" alt="Logo" width="200">
   </a>
 
   <p align="center">
@@ -70,7 +70,7 @@
 
 ## About The Project
 
-MonoSlate is a black & white theme portfolio website template that you can quickly setup and customize to make it your own. The design is sleek yet well-organized with multiple sections to suit your needs regardless of which background you come from.
+adrianfreisinger.com is a black & white theme portfolio website template that you can quickly setup and customize to make it your own. The design is sleek yet well-organized with multiple sections to suit your needs regardless of which background you come from.
 
 This project is a fork of [v4 of Brittany Chiang's portfolio website](https://github.com/bchiang7/v4) which is quite awesome. Make sure to check that out as well.
 

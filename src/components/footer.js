@@ -90,17 +90,6 @@ const Footer = () => (
     </StyledSocialLinks>
 
     <StyledCredit tabindex="-1">
-      {/* <div className="copy">
-        <a href="https://github.com/biswajit-k/MonoSlate">
-          <div>Copy Website Template</div>
-        </a>
-        <span style={{ fontSize: '.5rem', color: 'var(--light-gray)', margin: '0px 5px' }}>
-          &bull;
-        </span>
-        <a href="https://brittanychiang.com">
-          <div>Inspired by Brittany Chiang</div>
-        </a>
-      </div> */}
       <div className="copy">
         <span style={{ fontSize: '1rem', marginRight: '5px' }}>&copy;</span> {name}{' '}
         <span style={{ fontSize: '.5rem', color: 'var(--light-gray)', margin: '0px 5px' }}>
