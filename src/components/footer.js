@@ -79,19 +79,25 @@ const Footer = () => {
   const [githubInfo, setGitHubInfo] = useState({
     stars: null,
     forks: null,
+    version: null,
   });
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && !process.env.GATSBY_FETCH_STATS) {
       return;
     }
-    fetch('https://api.github.com/repos/afreisinger/adrianfreisinger.com')
-      .then(response => response.json())
-      .then(json => {
-        const { stargazers_count, forks_count } = json;
+
+    const repoUrl = 'https://api.github.com/repos/afreisinger/adrianfreisinger.com';
+
+    Promise.all([fetch(repoUrl), fetch(`${repoUrl}/releases/latest`)])
+      .then(async ([repoRes, releaseRes]) => {
+        const repoJson = await repoRes.json();
+        const releaseJson = releaseRes.ok ? await releaseRes.json() : null;
+
         setGitHubInfo({
-          stars: stargazers_count,
-          forks: forks_count,
+          stars: repoJson.stargazers_count,
+          forks: repoJson.forks_count,
+          version: releaseJson ? releaseJson.tag_name : null,
         });
       })
       .catch(e => console.error(e));
@@ -114,9 +120,12 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/afreisinger/adrianfreisinger.com">
-          <div>Designed &amp; Built by Adrián Freisinger</div>
+          <div>
+            Designed &amp; Built by Adrián Freisinger
+            {githubInfo.version && <span> — {githubInfo.version}</span>}
+          </div>
 
-          {githubInfo.stars && githubInfo.forks && (
+          {githubInfo.stars !== null && githubInfo.forks !== null && (
             <div className="github-stats">
               <span>
                 <Icon name="Star" />
