@@ -1,9 +1,9 @@
 ---
 name: Adrián Freisinger
 profession: Electronic Engineer
-education: Universidad de Buenos Aires
-work: Agencia de Recaudación y Control Aduanero ARCA
-location: Argentina
+education: 'Facultad de Ingeniería de la Universidad de Buenos Aires, UBA'
+work: 'Agencia de Recaudación y Control Aduanero, ARCA'
+location: 'Buenos Aires, Argentina'
 email: 'afreisinger@gmail.com'
 cover: ./me.jpg
 skills:
