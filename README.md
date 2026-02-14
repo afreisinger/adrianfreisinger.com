@@ -72,7 +72,7 @@
 
 adrianfreisinger.com is a black & white theme portfolio website template that you can quickly setup and customize to make it your own. The design is sleek yet well-organized with multiple sections to suit your needs regardless of which background you come from.
 
-This project is a fork of [v4 of Brittany Chiang's portfolio website](https://github.com/bchiang7/v4) which is quite awesome. Make sure to check that out as well.
+This project is a fork of [Brittany Chiang's portfolio website](https://github.com/bchiang7/v4) which is quite awesome. Make sure to check that out as well.
 
 The key features are:
 
@@ -82,6 +82,15 @@ The key features are:
 - **Free Hosting**: Quickly and easily deploy your portfolio website for free on [Netlify](https://www.netlify.com/) or [Github Pages](https://pages.github.com/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+The key changes are:
+
+- **Gatsby 5**: Updated to Gatsby 5 and React 18
+- **Open Graph Images**: Added professional Open Graph images
+- **Feature Toggle System**: Implemented feature toggle system for conditional section rendering
+- **Customizable Content**: Effortlessly update your content and sections with zero coding work
+- **Free Hosting**: Quickly and easily deploy your portfolio website for free on self-hosted.
 
 ### Built With
 
