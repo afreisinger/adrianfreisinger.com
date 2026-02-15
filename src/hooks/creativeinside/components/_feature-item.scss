@@ -1,0 +1,43 @@
+
+.feature-item{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2.4em 1.5em;
+	padding-bottom: 3.4em;
+	background-color: var(--clr-secondary-light);
+	border-radius: 1rem;
+	transition: var(--transition);
+
+	&:hover{
+        transform:translateY(-1.5rem) scale(1.03);
+    }
+	&__image-box{
+
+		background-color: #C7FAE9;
+		padding: 1.4em;
+		border-radius: .7rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__image{
+		width: 1.95rem;
+		height: 1.95rem;
+	}
+	&__name{
+		font-weight: 600;
+		font-size: var(--fs-500);
+		color: var(--clr-primary);
+	}
+	&__detail{
+		padding: 0 .6em;
+		text-align: center;
+		width: 28ch;
+		font-size: var(--fs-200);
+		color: var(--clr-grey)
+	}
+}
+
+
