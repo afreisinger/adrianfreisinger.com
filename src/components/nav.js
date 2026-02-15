@@ -160,7 +160,6 @@ const StyledMenuWrapper = styled.div`
 
 /* ================= COMPONENT ================= */
 const Nav = ({ isHome }) => {
-  const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -172,17 +171,8 @@ const Nav = ({ isHome }) => {
   const handleScroll = () => setScrolledToTop(window.pageYOffset < 50);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const timeout = setTimeout(() => setIsMounted(true), 100);
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const timeout = isHome ? loaderDelay : 0;
@@ -223,18 +213,15 @@ const Nav = ({ isHome }) => {
         ) : (
           <>
             <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition nodeRef={logoRef} classNames={fadeClass} timeout={timeout}>
-                  {Logo}
-                </CSSTransition>
-              )}
+              <CSSTransition nodeRef={logoRef} classNames={fadeClass} timeout={timeout} appear={true}>
+                {Logo}
+              </CSSTransition>
             </TransitionGroup>
 
             <StyledLinks>
               <ol>
                 <TransitionGroup component={null}>
-                  {isMounted &&
-                    navLinks &&
+                  {navLinks &&
                     navLinks.map(({ url, name }, i) => {
                       const ref = (linkRefs.current[i] ||= React.createRef());
                       return (
@@ -243,6 +230,7 @@ const Nav = ({ isHome }) => {
                           nodeRef={ref}
                           classNames={fadeDownClass}
                           timeout={timeout}
+                          appear={true}
                         >
                           <li ref={ref} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                             <Link to={url}>{name}</Link>
@@ -255,13 +243,11 @@ const Nav = ({ isHome }) => {
             </StyledLinks>
 
             <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition nodeRef={menuRef} classNames={fadeClass} timeout={timeout}>
-                  <StyledMenuWrapper ref={menuRef}>
-                    <Menu />
-                  </StyledMenuWrapper>
-                </CSSTransition>
-              )}
+              <CSSTransition nodeRef={menuRef} classNames={fadeClass} timeout={timeout} appear={true}>
+                <StyledMenuWrapper ref={menuRef}>
+                  <Menu />
+                </StyledMenuWrapper>
+              </CSSTransition>
             </TransitionGroup>
           </>
         )}
