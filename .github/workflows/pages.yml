@@ -172,6 +172,7 @@ jobs:
           lhci collect \
             --url=${{ needs.deploy-preview.outputs.page_url }} \
             --numberOfRuns=3
+            --outputDir=.lighthouseci
 
           lhci assert \
             --assertions.categories:performance=error:0.9 \
