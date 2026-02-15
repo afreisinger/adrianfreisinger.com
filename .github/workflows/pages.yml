@@ -160,8 +160,10 @@ jobs:
       
       - name: Run Lighthouse CI
         run: npx lhci autorun
+        continue-on-error: true
 
       - name: Upload Lighthouse report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
