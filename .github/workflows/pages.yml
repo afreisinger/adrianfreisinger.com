@@ -100,8 +100,13 @@ jobs:
         #   PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       
+      - name: Verify build
+        run: ls -la public
+
       - name: Run Lighthouse CI
         if: github.event_name == 'pull_request'
+        env:
+          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx lhci autorun
 
       - name: Upload Lighthouse report
@@ -110,6 +115,7 @@ jobs:
         with:
           name: lighthouse-report
           path: .lighthouseci
+          if-no-files-found: ignore
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
