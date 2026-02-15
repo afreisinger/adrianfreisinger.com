@@ -1,9 +1,10 @@
-name: Deploy Gatsby (local runner)
+name: Deploy Gatsby site (self-hosted runner)
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -32,14 +33,14 @@ jobs:
 
       - name: Ensure releases directory exists
         run: |
-          mkdir -p /data/dev/www/html/releases
+          mkdir -p /data/dev/adrianfreisinger.com/html/releases
 
       - name: Create release directory
         id: release
         run: |
           set -e
           TIMESTAMP=$(TZ=America/Argentina/Buenos_Aires date +"%Y%m%dT%H%M%S")
-          RELEASE_DIR="/data/dev/www/html/releases/$TIMESTAMP"
+          RELEASE_DIR="/data/dev/adrianfreisinger.com/html/releases/$TIMESTAMP"
           mkdir -p "$RELEASE_DIR"
           echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
 
@@ -47,19 +48,6 @@ jobs:
         run: |
           set -e
           rsync -av --delete public/ "${{ steps.release.outputs.release_dir }}/"
-
-
-      # - name: Update current symlink (atomic switch)
-      #   run: |
-      #     cd /data/dev/www/html
-      #     RELEASE_NAME=$(basename "${{ steps.release.outputs.release_dir }}")
-      #     ln -sfn "releases/$RELEASE_NAME" current
-
-      # - name: Update current symlink inside container
-      #   run: |
-      #     RELEASE_NAME=$(basename "${{ steps.release.outputs.release_dir }}")
-      #     docker exec adrianfreisinger.com sh -c "cd /var/www/html && ln -sfn releases/$RELEASE_NAME current"
-
       
       - name: Update current volume
         run: |
