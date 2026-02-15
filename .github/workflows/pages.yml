@@ -164,6 +164,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-preview
     steps:
+      
+      - name: Debug URL
+        run: echo "Preview URL:" ${{ needs.deploy-preview.outputs.page_url }}
+
       - name: Install LHCI
         run: npm install -g @lhci/cli
 
