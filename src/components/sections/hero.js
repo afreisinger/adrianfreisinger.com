@@ -1,10 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
-import { loaderDelay } from '@utils';
+import styled, { keyframes } from 'styled-components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+
+const fadeUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -17,10 +26,6 @@ const StyledHeroSection = styled.section`
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
     padding-top: var(--nav-height);
-  }
-
-  @media (max-width: 768px) {
-    padding: auto;
   }
 
   h1 {
@@ -46,6 +51,13 @@ const StyledHeroSection = styled.section`
     color: var(--dark-gray);
   }
 
+  .hero-item {
+    opacity: 1; /* Visible by default for SSR */
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ${fadeUp} 600ms var(--easing) both;
+    }
+  }
+
   .down_arrow {
     display: none;
     position: absolute;
@@ -57,33 +69,6 @@ const StyledHeroSection = styled.section`
 
     @media (max-width: 768px) {
       display: block;
-    }
-  }
-
-  .email-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
-  }
-
-  /* Fade up animation for SSR-friendly rendering */
-  @media (prefers-reduced-motion: no-preference) {
-    .fadeup-enter {
-      opacity: 0.01;
-      transform: translateY(20px);
-    }
-    .fadeup-enter-active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 600ms var(--easing), transform 600ms var(--easing);
-    }
-    .fadeup-appear {
-      opacity: 0.01;
-      transform: translateY(20px);
-    }
-    .fadeup-appear-active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 600ms var(--easing), transform 600ms var(--easing);
     }
   }
 `;
@@ -99,7 +84,6 @@ const TEXTS = [
 const Hero = () => {
   const [index, setIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const revealRefs = useRef([]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -112,51 +96,33 @@ const Hero = () => {
     return () => clearInterval(intervalId);
   }, [prefersReducedMotion]);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Adrián Freisinger</h2>;
-  const three = (
+  const items = [
+    <h1>Hi, my name is</h1>,
+    <h2 className="big-heading">Adrián Freisinger</h2>,
     <h3 className="medium-heading">
       <span>{TEXTS[index]}</span>
-    </h3>
-  );
-
-  const four = (
+    </h3>,
     <p>
       I’m an Electronic Engineer, passionate programmer from Argentina specializing in building
       exceptional digital experiences. Currently, I work on open-source video platforms and
       AI-powered bots.
-    </p>
-  );
-
-  const items = [one, two, three, four];
+    </p>,
+  ];
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
-        items.map((item, i) => <div key={i}>{item}</div>)
-      ) : (
-        <TransitionGroup component={null}>
-          {items.map((item, i) => {
-            const ref = (revealRefs.current[i] ||= React.createRef());
-            return (
-              <CSSTransition
-                key={i}
-                nodeRef={ref}
-                classNames="fadeup"
-                timeout={loaderDelay}
-                appear={true}
-              >
-                <div ref={ref} style={{ transitionDelay: `${(i + 1) * 100}ms` }}>
-                  {item}
-                </div>
-              </CSSTransition>
-            );
-          })}
-          <Link className="down_arrow" to="#featured-posts">
-            <Icon className="detail__item__icon" name="DownArrow" />
-          </Link>
-        </TransitionGroup>
-      )}
+      {items.map((item, i) => (
+        <div 
+          key={i} 
+          className="hero-item" 
+          style={{ animationDelay: `${(i + 1) * 100}ms` }}
+        >
+          {item}
+        </div>
+      ))}
+      <Link className="down_arrow" to="#featured-posts">
+        <Icon className="detail__item__icon" name="DownArrow" />
+      </Link>
     </StyledHeroSection>
   );
 };

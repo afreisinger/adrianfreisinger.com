@@ -95,13 +95,18 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       
+      - name: Disable Gatsby telemetry
+        run: npx gatsby telemetry --disable
+
       - name: Build with Gatsby
         # env:
         #   PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       
-      - name: Verify build
-        run: ls -la public
+      - name: Verify build directory
+        run: |
+          ls -la public
+          [ -f public/index.html ] && echo "index.html exists" || echo "index.html MISSING"
 
       - name: Run Lighthouse CI
         if: github.event_name == 'pull_request'
