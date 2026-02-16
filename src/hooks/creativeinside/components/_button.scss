@@ -1,0 +1,87 @@
+.btn{
+
+	font-family: "poppins", sans-serif;
+	display: inline-block;
+	padding: 1em 1.6em;				// see the power of em - set padding automatically for lg and sm
+	text-align: center;
+	border-radius: 2.5rem;
+	font-weight: 500;
+	font-size: var(--fs-200);
+	text-decoration: none;
+	border: none;
+	transition: all .2s;
+	&:hover{
+		cursor: pointer;
+		transform: translateY(-2px);
+		box-shadow: var(--shadow);
+	}
+	
+	&-sm{
+        border-radius: 1.5rem;
+        font-weight: 500;
+        font-size: var(--fs-100);
+	}
+	&-lg{
+        border-radius: 4rem;
+        font-weight: 500;
+        font-size: var(--fs-350);
+	}
+	&-md{
+        border-radius: 4rem;
+        font-weight: 500;
+        font-size: var(--fs-300);
+	}
+	&--primary{
+
+		background-color: var(--clr-primary);
+		color: #fff;
+	}
+	&--secondary{
+
+		color: var(--clr-primary);
+		background-color: #fefefe;
+		border: .15rem solid var(--clr-primary);
+		&:hover{
+			color: #fff;
+			background-color: var(--clr-primary-light);
+		}
+	}
+
+}
+
+.link{
+
+	display: inline-block;
+
+	font-size: var(--fs-200);
+	font-weight: 500;
+	letter-spacing: .1rem;
+	padding: .5rem .5em;
+	border-bottom: 3px solid transparent;
+
+	color: var(--clr-grey);
+	text-decoration: none;
+	text-shadow: var(--shadow);
+
+	transition: all .2s;
+
+	&:hover{
+		border-bottom: 3px solid var(--clr-primary-light);
+	}
+	&-light{
+		color: #fff;
+		font-size: var(--fs-350);
+		&:hover{
+			border-bottom: 3px solid #fff;
+		}
+	}
+
+}
+#active{
+	color: var(--clr-primary);
+	&.link-light{
+		color: #fff;
+		font-weight: 600;
+		font-size: var(--fs-400);
+	}
+}

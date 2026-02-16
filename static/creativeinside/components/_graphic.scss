@@ -1,0 +1,75 @@
+
+.graphic{
+	padding: 2rem;
+	border-radius: .5rem;
+	box-shadow: var(--shadow);
+	background-color: #fff;
+	display: inline-block;
+
+	&__heading{
+		font-size: var(--fs-200);
+		font-weight: 600;
+	}
+	&__metric-box{
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		margin-top: 1.4em;
+	}
+	&__list{
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		gap: 1.5rem;
+	}
+	&__pointer{
+		font-weight: 600;
+		font-size: var(--fs-100);
+		display: flex;
+		align-items: center;
+		gap: .5rem;
+	}
+	&__color{
+
+		width: .7rem;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		&-1{
+			background-color: var(--clr-primary);
+		}
+		&-2{
+			background-color: var(--clr-secondary);
+		}
+		
+	}
+	&__pie-box{
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	&__pie{
+		aspect-ratio: 1;
+		border-radius: 50%;
+		width: 7rem;
+		position: relative;
+		background-image: conic-gradient(
+			var(--clr-primary) 80deg, 
+			var(--clr-secondary) 81deg, 
+		);
+		&::before{
+			content: "";
+			position: absolute;
+			width: 3.8rem;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+			background-color: #fff;
+		}
+		
+	}
+
+}

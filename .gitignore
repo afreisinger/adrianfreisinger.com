@@ -1,0 +1,19 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+
+# Build directory
+/public
+.DS_Store
+
+.vscode/
+.agents
+.agent
+www.code-workspace
+.env.development
+.env.production
+.env.test
+.env.local
+.env

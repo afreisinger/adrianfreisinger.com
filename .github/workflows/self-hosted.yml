@@ -1,0 +1,69 @@
+name: Deploy Gatsby site (self-hosted runner)
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: |
+          if [ -f yarn.lock ]; then
+            yarn install --frozen-lockfile
+          else
+            npm ci
+          fi
+
+      - name: Build
+        run: yarn build
+
+      - name: Ensure releases directory exists
+        run: |
+          mkdir -p /data/dev/adrianfreisinger.com/html/releases
+
+      - name: Create release directory
+        id: release
+        run: |
+          set -e
+          TIMESTAMP=$(TZ=America/Argentina/Buenos_Aires date +"%Y%m%dT%H%M%S")
+          RELEASE_DIR="/data/dev/adrianfreisinger.com/html/releases/$TIMESTAMP"
+          mkdir -p "$RELEASE_DIR"
+          echo "release_dir=$RELEASE_DIR" >> $GITHUB_OUTPUT
+
+      - name: Sync files to release
+        run: |
+          set -e
+          rsync -av --delete public/ "${{ steps.release.outputs.release_dir }}/"
+      
+      - name: Update current volume
+        run: |
+          docker exec adrianfreisinger.com sh -c "rm -rf /var/www/html/current/*"
+          docker exec adrianfreisinger.com sh -c "cp -r /var/www/html/releases/$(basename ${{ steps.release.outputs.release_dir }})/* /var/www/html/current/"
+          docker exec adrianfreisinger.com sh -c "chmod -R 755 /var/www/html/current"
+      
+      - name: Reload nginx
+        run: |
+          docker exec adrianfreisinger.com nginx -s reload
+
+      - name: Log deploy
+        run: |
+          echo "$(TZ=America/Argentina/Buenos_Aires date +"%Y-%m-%d %H:%M:%S") - Deployed release $(basename ${{ steps.release.outputs.release_dir }})" >> /data/dev/www/html/deploy.log
+
+      - name: Cleanup old releases (keep last 5)
+        run: |
+          cd /data/dev/www/html/releases
+          ls -dt */ | tail -n +6 | xargs -r rm -rf

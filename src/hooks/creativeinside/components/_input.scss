@@ -1,0 +1,28 @@
+
+.input{
+    font-family: "poppins", sans-serif;
+    display: inline-block;
+    background-color: var(--clr-grey-thin);
+    color: var(--clr-grey);
+    resize: none;
+    padding: 1.1em .65em;
+    border: none;
+    border-radius: .2em;
+    font-weight: 450;   
+    transition: box-shadow .2s;
+
+    &-sm{
+		font-size: var(--fs-100);
+		box-shadow: var(--shadow);
+		color: var(--clr-grey-light);
+		
+    }
+
+    &:focus, &:active{
+        outline: none;
+        color: var(--clr-grey);
+        box-shadow: 0 0 6px #8c908f69;
+        border: .1px solid var(--clr-grey-thin);
+    }
+
+}
