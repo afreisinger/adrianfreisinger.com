@@ -1,0 +1,26 @@
+.list-item{
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    &__icon-box{
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: .8rem;
+        border-radius: 50%;
+        box-shadow: 0 0 1rem .2rem rgba(0, 0, 0, .1);
+    }
+    &__text-box{
+        & p{
+            width: 33ch;
+        }
+    }
+    &__heading{
+        font-size: var(--fs-300);
+        color: var(--clr-black);
+        font-weight: 550;
+        margin-bottom: .5em;
+    }
+
+
+}

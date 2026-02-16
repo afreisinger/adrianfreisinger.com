@@ -1,0 +1,19 @@
+
+.nav__link{
+
+	&:link, &:visited, &:active{
+		align-self: center;
+		display: inline-block;
+		color: #6C98A3;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: .1rem;
+		padding: .5rem 1rem;
+	}
+	&:hover{
+		color: #525f63;
+	}
+	&-active{color: var(--color-grey) !important; font-weight: 700 !important;}
+
+}

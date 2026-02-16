@@ -1,5 +1,10 @@
 # Changelog
 
+## [2026-02-15]
+
+- 👷 ci: optimize Gatsby CI/CD workflow and Lighthouse configuration
+- ✨ feat(projects): add 'Creative Inside' static project files
+
 ## [2026-02-14]
 
 - ✨ feat(projects): add 'Creative Inside' project and enable projects section

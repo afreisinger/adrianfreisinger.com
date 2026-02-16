@@ -1,0 +1,83 @@
+.navigation{
+
+    display: none;
+    &__checkbox{
+        display:none;
+    }   
+    &__button{
+        width:3.6rem;
+        height:3.6rem;
+        
+        position: fixed;
+        top:.6rem;
+        right:1rem;
+        z-index:200;
+
+        background-color: #fefefe;
+        border-radius: 50%;
+        text-align: center;                     // to align nav__icon
+
+        &:hover{
+            cursor:pointer;
+        }
+ 
+    }
+    &__background{
+        width:1.1rem;
+        height:1.1rem;
+        position: fixed;
+        top:1.5rem;
+        right:1.5rem;
+        border-radius: 50%;
+        background-image: radial-gradient(var(--clr-primary-light),var(--clr-primary));
+        // background: radial-gradient(circle, var(--clr-primary-light) 0%, var(--clr-primary) 71%,
+        //  rgba(244,244,244,0.8239670868347339) 72%,
+        //   rgba(244,244,244,0.8015581232492998) 99%);
+        z-index:100;
+        transition: all .4s;
+     
+    }
+    
+    &__checkbox:checked ~ &__background {
+        
+        transform: scale(130);
+    }
+    &__icon{
+        margin-top: 1.8rem;
+        position: relative;
+
+        &,&::after,&::before{
+            display:inline-block;
+            width: 2rem;
+            height: 2px;
+            background-color: var(--clr-grey);
+
+        }
+        &::after,&::before{
+            position: absolute;
+            content:"";
+            left:0;
+            transition: all .2s;
+        }
+        &::after{
+            top:.6rem;
+        }
+        &::before{
+            top:-.6rem;
+        }
+    }
+
+    // make icon crossed when checkbox is checked
+    &__checkbox:checked + &__button &__icon{                // + since adjacent sibling
+        background-color: transparent;
+        &::after,&::before{
+            top:0;
+        }
+        &::after{
+            transform: rotate(-135deg);             // instead of 45deg this rotates more so better effect
+        }
+        &::before{
+            transform: rotate(135deg);
+        }
+    }
+}

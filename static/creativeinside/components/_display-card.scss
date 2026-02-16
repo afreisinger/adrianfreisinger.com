@@ -1,0 +1,130 @@
+
+.display-card{
+
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    padding: 1em 1em;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    transition: var(--transition);
+    box-shadow: 0 0 .7rem .3rem rgba(0, 0, 0, .1);
+    
+    &__top{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1.1em;
+        
+    }
+    &__bottom{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__option{  
+        padding: .23em;
+        width: 2.3rem;
+        border-radius: 50%;
+        margin-right: .4em;
+        cursor: pointer;
+        &:hover{
+            background-color: #dadada69;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .2s;
+
+    }
+    &__option-icon{
+        width: 100%;
+        filter: grayscale(1);
+        opacity: 20%;
+
+    }
+    &__heading{
+        margin-right: auto;
+        font-weight: 600;
+        font-size: var(--fs-100);
+    }
+    &__button{
+        margin-right: 4%;
+    }
+    &__pallet{
+        width: 50%;
+        margin-right: auto;
+        margin-left: 6%;
+    }
+    &__pallet-image{
+        height: 4rem;
+        border-radius: .5rem;
+        
+    }
+    &__select{
+        display: flex;
+        margin-right: 7%;
+        
+        justify-content: space-between;
+        align-items: flex-end;
+        
+    }
+    &__download{
+        padding: .6em;
+        border-radius: 50%;
+        margin-right: 8%;
+        &:hover{
+            background-color:#dadada69;
+        }
+        transition: background-color .2s;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__download-icon{
+        width: 1.2rem;
+        filter: grayscale(1);
+        opacity: 60%;
+
+    }
+    &__copy{
+        padding: .6rem;
+        border-radius: 50%;
+        &:hover{
+            background-color:#dadada69;
+        }
+        transition: background-color .2s;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__copy-icon{
+        width: 1.2rem;
+        filter: grayscale(1);
+        opacity: 60%;
+    }
+
+    &-1{
+        right: 5%;
+        top: 5%;
+        z-index: 1;
+    }
+    &-2{
+        right: 18%;
+        top: 30%;
+        z-index: 2; 
+    }
+    &-3{
+        left: 8%;
+        bottom: 8%;
+        z-index: 3;
+    }
+
+    &:hover{
+        transform: translateY(-.5rem) scale(1.05);
+        z-index: 5;
+    }
+}
