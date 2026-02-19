@@ -7,7 +7,6 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
-
 const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -21,13 +20,19 @@ const StyledProjectsSection = styled.section`
   .projects-grid {
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
     position: relative;
     margin-top: 50px;
 
     @media (max-width: 1080px) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 768px) {
+      // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
@@ -170,7 +175,7 @@ const Projects = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { featured: { ne: true } }
         }
-        sort: {frontmatter: {date: DESC}}
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -296,10 +301,11 @@ const Projects = () => {
           </TransitionGroup>
         )}
       </ul>
-
-      <button className="more-button" onClick={() => setShowMore(!showMore)}>
-        Show {showMore ? 'Less' : 'More'}
-      </button>
+      {projects.length > GRID_LIMIT && (
+        <button className="more-button" onClick={() => setShowMore(!showMore)}>
+          Show {showMore ? 'Less' : 'More'}
+        </button>
+      )}
     </StyledProjectsSection>
   );
 };
