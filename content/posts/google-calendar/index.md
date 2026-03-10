@@ -10,7 +10,7 @@ tags:
   - google-calendar
   - api
   - scripting
-repo: 'https://github.com/afreisinger/mi-post'
+repo: 'https://github.com/afreisinger/school-calendar-google'
 ---
 
 ## The Problem
