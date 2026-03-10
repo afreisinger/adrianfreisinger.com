@@ -7,6 +7,25 @@
 const path = require('path');
 const _ = require('lodash');
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+      title: String!
+      description: String
+      date: Date @dateformat
+      slug: String
+      tags: [String]
+      repo: String
+      medium: String
+    }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
@@ -29,7 +48,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       tagsGroup: allMarkdownRemark(limit: 2000) {
-        group(field: {frontmatter: {tags: SELECT}}) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
         }
       }

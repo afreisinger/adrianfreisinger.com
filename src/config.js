@@ -26,6 +26,10 @@ module.exports = {
       url: '/about',
     },
     {
+      name: 'Blog',
+      url: '/blog',
+    },
+    {
       name: 'Projects',
       url: '/projects',
     },
@@ -36,7 +40,7 @@ module.exports = {
   ],
 
   features: {
-    blog: false,
+    blog: true,
     projects: true,
     youtube: false,
     contact: false,

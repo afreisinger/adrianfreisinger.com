@@ -17,3 +17,4 @@ www.code-workspace
 .env.test
 .env.local
 .env
+/tmp

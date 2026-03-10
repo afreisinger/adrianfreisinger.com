@@ -6,31 +6,22 @@ import styled from 'styled-components';
 import { Layout } from '@components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
+import { usePrefersReducedMotion } from '@hooks';
 
 const StyledMainContainer = styled.main`
-  & > header {
-    text-align: center;
-    margin-bottom: 100px;
-    a {
-      &:hover,
-      &:focus {
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
-            20 0,
-          auto;
-      }
-    }
-  }
-
-  .post_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   footer {
     ${({ theme }) => theme.mixins.flexBetween};
     width: 100%;
     margin-top: 20px;
+  }
+`;
+
+const StyledHeader = styled.header`
+  text-align: center;
+  margin-bottom: 100px;
+
+  @media (prefers-reduced-motion: no-preference) {
+    visibility: hidden;
   }
 `;
 const StyledGrid = styled.ul`
@@ -105,14 +96,27 @@ const StyledPost = styled.li`
       -webkit-box-orient: vertical;
     }
   }
+  @media (prefers-reduced-motion: no-preference) {
+    visibility: hidden;
+  }
 `;
 
 const BlogPage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
-  const revealArchiveLink = useRef(null);
+  const revealTitle = useRef(null);
+  const revealPosts = useRef([]);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    sr.reveal(revealArchiveLink.current, srConfig());
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    // Eliminamos el delay inicial para que empiece de inmediato al montar
+    sr.reveal(revealTitle.current, { ...srConfig(0), viewFactor: 0.01, duration: 400 });
+    revealPosts.current.forEach((ref, i) =>
+      sr.reveal(ref, { ...srConfig(100 + i * 50), viewFactor: 0.01, duration: 400 }),
+    );
   }, []);
 
   // Function to calculate read time
@@ -128,10 +132,10 @@ const BlogPage = ({ location, data }) => {
       <Helmet title="Blog" />
 
       <StyledMainContainer>
-        <header>
+        <StyledHeader ref={revealTitle}>
           <h1 className="big-heading">Blog</h1>
           <p className="subtitle">All the latest posts</p>
-        </header>
+        </StyledHeader>
 
         <div className="post_container">
           <StyledGrid>
@@ -146,7 +150,7 @@ const BlogPage = ({ location, data }) => {
                 });
                 const readTime = calculateReadTime(html);
                 return (
-                  <StyledPost key={i}>
+                  <StyledPost key={i} ref={el => (revealPosts.current[i] = el)}>
                     <div className="metadata">
                       <p className="date">{formattedDate}</p>
                       <p className="read_time">{readTime} min read</p>
@@ -156,7 +160,7 @@ const BlogPage = ({ location, data }) => {
                         <h3 className="title">{title}</h3>
                       </Link>
                       <p className="description">{description}</p>
-                      <Link className="styled_link more_link" to={slug} ref={revealArchiveLink}>
+                      <Link className="styled_link more_link" to={slug}>
                         Read More &rarr;
                       </Link>
                     </div>
@@ -178,10 +182,10 @@ BlogPage.propTypes = {
 export default BlogPage;
 
 export const pageQuery = graphql`
-  {
+  query BlogIndexQuery {
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/posts/" } }
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
