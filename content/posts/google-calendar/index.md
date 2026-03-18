@@ -1,7 +1,7 @@
 ---
 title: Generate a School Calendar with Python and Google Calendar API
 description: 'Learn how to automate the creation of recurring school calendar events using Python, pandas, and the Google Calendar API — turning an Excel spreadsheet into a fully populated calendar in seconds.'
-featured: false
+featured: true
 date: 2026-03-09
 slug: /blog/google-calendar/
 tags:
