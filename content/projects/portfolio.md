@@ -9,7 +9,7 @@ tech:
   - React
   - Styled Components
 featured: true
-order: 1
+order: 2
 ---
 
 My professional portfolio website built with Gatsby and React.
