@@ -3,6 +3,7 @@ date: '2026-04-02'
 title: 'Telegram Weather Bot'
 cover: ./images/weather-composition.png
 github: 'https://github.com/afreisinger/weather-bot'
+docker: 'https://hub.docker.com/r/afreisinger/weather-bot'
 tech:
   - Python
   - OpenWeather API

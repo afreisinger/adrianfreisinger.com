@@ -22,6 +22,7 @@ import {
   IconEducation,
   IconTag,
   IconMedium,
+  IconDocker,
 } from '@components/icons';
 
 const Icon = ({ name }) => {
@@ -68,6 +69,8 @@ const Icon = ({ name }) => {
       return <IconTag />;
     case 'Medium':
       return <IconMedium />;
+    case 'Docker':
+      return <IconDocker />;
     default:
       return <IconExternal />;
   }

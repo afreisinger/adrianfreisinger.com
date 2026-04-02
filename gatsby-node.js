@@ -21,6 +21,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       tags: [String]
       repo: String
       medium: String
+      docker: String
     }
   `;
   createTypes(typeDefs);

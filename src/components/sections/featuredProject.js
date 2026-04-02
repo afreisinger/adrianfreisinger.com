@@ -318,7 +318,7 @@ const FeaturedProject = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { featured: { eq: true } }
         }
-        sort: {frontmatter: {order: ASC}}
+        sort: { frontmatter: { order: ASC } }
       ) {
         edges {
           node {
@@ -336,6 +336,7 @@ const FeaturedProject = () => {
               }
               featured
               github
+              docker
               external
               tech
             }
@@ -366,7 +367,7 @@ const FeaturedProject = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, docker, cover, cta } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -403,6 +404,11 @@ const FeaturedProject = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
+                      {docker && (
+                        <a href={docker} aria-label="Docker Link">
+                          <Icon name="Docker" />
+                        </a>
+                      )}
                       {external && !cta && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
@@ -413,7 +419,7 @@ const FeaturedProject = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a href={external ? external : docker ? docker : github ? github : '#'}>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
