@@ -19,9 +19,7 @@ A Telegram bot that provides real-time weather information powered by the **Open
 
 The project is built with Python 3.12, aiogram 3.x, and can be easily integrated with OpenClaw for agent automation or LLM pipelines
 
----
-
-## 📋 Table of Contents
+<!-- ## 📋 Table of Contents
 
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -35,7 +33,7 @@ The project is built with Python 3.12, aiogram 3.x, and can be easily integrated
 - [CLI Usage](#cli-usage)
 - [Telegram Commands](#telegram-commands)
 - [Running Tests](#running-tests)
-- [Architecture Overview](#architecture-overview)
+- [Architecture Overview](#architecture-overview) -->
 
 ---
 
@@ -54,7 +52,7 @@ The project is built with Python 3.12, aiogram 3.x, and can be easily integrated
 
 ## 📁 Project Structure
 
-```
+```text
 weather-bot/
 ├── cli/
 │   └── weather_cli.py          # CLI entrypoint
@@ -189,19 +187,19 @@ python -m cli.weather_cli -v current "Tokyo"
 
 ## 💬 Telegram Commands
 
-| Command                           | Description                                |
-| --------------------------------- | ------------------------------------------ |
-| `/weather`                        | Current weather for the default city       |
-| `/weather <city>`                 | Current weather for a specific city        |
-| `/forecast`                       | 3-day forecast for the default city        |
-| `/forecast <city>`                | 3-day forecast for a specific city         |
-| `/forecast <city> <days>`         | Custom-day forecast (1–8 days)             |
-| `/forecast_hourly`                | 12-hour forecast for the default city      |
-| `/forecast_hourly <city>`         | 12-hour forecast for a specific city       |
-| `/forecast_hourly <city> <hours>` | Custom hourly forecast (1–48 hours)        |
-| `/alerts`                         | Active weather alerts for the default city |
-| `/alerts <city>`                  | Active weather alerts for a specific city  |
-| `/help`                           | Show all available commands                |
+| Command                       | Description                                |
+| ----------------------------- | ------------------------------------------ |
+| `/weather`                    | Current weather for the default city       |
+| `/weather city`               | Current weather for a specific city        |
+| `/forecast`                   | 3-day forecast for the default city        |
+| `/forecast city`              | 3-day forecast for a specific city         |
+| `/forecast city days`         | Custom-day forecast (1–8 days)             |
+| `/forecast_hourly`            | 12-hour forecast for the default city      |
+| `/forecast_hourly city`       | 12-hour forecast for a specific city       |
+| `/forecast_hourly city hours` | Custom hourly forecast (1–48 hours)        |
+| `/alerts`                     | Active weather alerts for the default city |
+| `/alerts city`                | Active weather alerts for a specific city  |
+| `/help`                       | Show all available commands                |
 
 ---
 
@@ -224,7 +222,7 @@ pytest tests/ -v --cov=weather --cov-report=term-missing
 
 ## 🏗 Architecture Overview
 
-```
+```text
 Telegram User
      │
      ▼
