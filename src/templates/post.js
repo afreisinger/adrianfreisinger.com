@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
-import { IconGitHub, IconMedium } from '@components/icons';
+import { IconGitHub, IconMedium, IconDocker } from '@components/icons';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
@@ -225,8 +225,8 @@ const PostTemplate = ({ data, location }) => {
           {/* Descripción del post */}
           {frontmatter.description && <p className="post-description">{frontmatter.description}</p>}
 
-          {/* Links opcionales (GitHub, Medium) */}
-          {(frontmatter.repo || frontmatter.medium) && (
+          {/* Links opcionales (GitHub, Medium, Docker) */}
+          {(frontmatter.repo || frontmatter.medium || frontmatter.docker) && (
             <div className="post-links">
               {frontmatter.repo && (
                 <a
@@ -244,6 +244,15 @@ const PostTemplate = ({ data, location }) => {
                   rel="noopener noreferrer"
                   title="View on Medium">
                   <IconMedium />
+                </a>
+              )}
+              {frontmatter.docker && (
+                <a
+                  href={frontmatter.docker}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View on Docker">
+                  <IconDocker />
                 </a>
               )}
             </div>
@@ -284,6 +293,7 @@ export const pageQuery = graphql`
         slug
         tags
         repo
+        docker
         medium
       }
     }

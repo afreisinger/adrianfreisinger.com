@@ -11,6 +11,7 @@ tags:
   - api
   - scripting
 repo: 'https://github.com/afreisinger/weather-bot'
+docker: 'https://hub.docker.com/r/afreisinger/weather-bot'
 ---
 
 ## 📋 Introduction
