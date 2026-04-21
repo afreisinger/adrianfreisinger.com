@@ -4,7 +4,7 @@ profession: Electronic Engineer
 education: 'Facultad de Ingeniería de la Universidad de Buenos Aires, UBA'
 work: 'Agencia de Recaudación y Control Aduanero, ARCA'
 location: 'Buenos Aires, Argentina'
-email: 'afreisinger@gmail.com'
+email: 'info@adrianfreisinger.com'
 cover: ./me.jpg
 skills:
   - Backend Development (Python, Go, FastAPI, PostgreSQL, Redis)

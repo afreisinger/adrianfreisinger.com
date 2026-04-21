@@ -83,7 +83,6 @@ The key features are:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 The key changes are:
 
 - **Gatsby 5**: Updated to Gatsby 5 and React 18
@@ -287,7 +286,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [![Linkedin](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/afreisinger/)
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:afreisinger@gmail.com)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@adrianfreisinger.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
